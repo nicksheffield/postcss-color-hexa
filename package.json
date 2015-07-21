@@ -1,0 +1,31 @@
+{
+  "name": "postcss-hexa",
+  "version": "1.0.0",
+  "description": "A postcss plugin that enables the use of hexa() to combine hex codes and opacity into rgba()",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nick Sheffield <numbereft@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicksheffield/postcss-hexa.git"
+  },
+  "keywords": [
+    "postcss-hexa",
+    "node",
+    "postcss",
+    "postcss-plugin",
+    "hex",
+    "hexa",
+    "color"
+  ],
+  "dependencies": [
+    "postcss-message-helpers": "^2.0.0"
+  ],
+  "bugs": {
+    "url": "https://github.com/nicksheffield/postcss-hexa/issues"
+  },
+  "homepage": "https://github.com/nicksheffield/postcss-hexa#readme"
+}
