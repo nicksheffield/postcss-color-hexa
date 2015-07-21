@@ -1,19 +1,28 @@
-/**
- * Module dependencies.
- */
+// ----------------------------------------------------------------------------
+// Dependencies
+// ----------------------------------------------------------------------------
+
 var helpers = require("postcss-message-helpers");
 
-/**
- * Constantes
- */
-var HEX_ALPHA_RE = /hexa\(#([0-9a-fA-F]{3,6}),([\s]{1,})([0-9\.]{1,})\)/i;
-var HEX_RE = /#([0-9a-fA-F]{3,6})/;
-var OPACITY_RE = /[0-9\.]{1,}(?=\))/;
-var DECIMAL_PRECISION = 100000; // 5 decimals
 
-/**
- * PostCSS plugin to transform hexa alpha colors
- */
+// ----------------------------------------------------------------------------
+// Regex's
+// ----------------------------------------------------------------------------
+
+// Match the whole property. I don't think I need this
+var HEX_ALPHA_RE = /hexa\(#([0-9a-fA-F]{3,6}),([\s]{1,})([0-9\.]{1,})\)/i;
+
+// Match the hex color
+var HEX_RE = /#(?:[0-9a-f]{3}){1,2}/;
+
+// Match the opacity number
+var OPACITY_RE = /[0-9\.]{1,}(?=\))/;
+
+
+// ----------------------------------------------------------------------------
+// PostCSS Plugin
+// ----------------------------------------------------------------------------
+
 module.exports = function plugin() {
 	return function(style) {
 		style.eachDecl(function transformDecl(decl) {
@@ -28,6 +37,10 @@ module.exports = function plugin() {
 	};
 };
 
+
+// ----------------------------------------------------------------------------
+// Helper functions
+// ----------------------------------------------------------------------------
 
 function transformHexAlpha(string) {
 	var h = HEX_RE.exec(string);
