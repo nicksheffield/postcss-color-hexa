@@ -9,7 +9,7 @@ var helpers = require("postcss-message-helpers");
 // Regex's
 // ----------------------------------------------------------------------------
 
-// Match the whole property. I don't think I need this
+// Match the whole property
 var HEX_ALPHA_RE = /hexa\(#([0-9a-fA-F]{3,6}),([\s]{1,})([0-9\.]{1,})\)/i;
 
 // Match the hex color
