@@ -1,4 +1,4 @@
-postcss-hexa
+postcss-color-hexa
 ===================
 A postcss plugin that enables the use of hexa() to combine hex codes and opacity into rgba()
 
@@ -17,5 +17,5 @@ body {
 ## Usage
 
 ```javascript
-postcss([require('postcss-hexa')]);
+postcss([require('postcss-color-hexa')]);
 ```
