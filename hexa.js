@@ -51,13 +51,17 @@ function transformHexAlpha(string) {
 	
 	var rgb = hexToRgb(h[0]);
 	var rgb_chars = [rgb.r, rgb.g, rgb.b];
+	var hexa = '';
 	
 	if(o){
 		rgb_chars.push(o);
-		return 'rgba(' + rgb_chars.join(', ') +')';
+		hexa = 'rgba(' + rgb_chars.join(', ') +')';
 	} else {
-		return 'rgb(' + rgb_chars.join(', ') + ')';
+		hexa = 'rgb(' + rgb_chars.join(', ') + ')';
 	}
+	
+	return string.replace(HEX_ALPHA_RE, hexa);
+	
 }
 
 // http://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb

@@ -134,4 +134,70 @@ describe('hexa()', function(){
 		
 	});
 	
+	
+	
+	it('without hexa', function(done){
+		
+		postcss([hexa()])
+		
+		.process('body { background: #f00; }')
+		
+		.then(function (compiled) {
+			if(compiled.css === 'body { background: #f00; }'){
+				done();
+			}else{
+				throw 'Output was incorrect';
+			}
+		});
+		
+	});
+	
+	it('first within a multi-value property', function(done){
+		
+		postcss([hexa()])
+		
+		.process('body { border: hexa(#fff, 0.1) 1px solid; }')
+		
+		.then(function (compiled) {
+			if(compiled.css === 'body { border: rgba(255, 255, 255, 0.1) 1px solid; }'){
+				done();
+			}else{
+				throw 'Output was incorrect';
+			}
+		});
+		
+	});
+	
+	it('within a multi-value property', function(done){
+		
+		postcss([hexa()])
+		
+		.process('body { border: 1px hexa(#fff, 0.1) solid; }')
+		
+		.then(function (compiled) {
+			if(compiled.css === 'body { border: 1px rgba(255, 255, 255, 0.1) solid; }'){
+				done();
+			}else{
+				throw 'Output was incorrect';
+			}
+		});
+		
+	});
+	
+	it('last within a multi-value property', function(done){
+		
+		postcss([hexa()])
+		
+		.process('body { border: 1px solid hexa(#fff, 0.1); }')
+		
+		.then(function (compiled) {
+			if(compiled.css === 'body { border: 1px solid rgba(255, 255, 255, 0.1); }'){
+				done();
+			}else{
+				throw 'Output was incorrect';
+			}
+		});
+		
+	});
+	
 });
