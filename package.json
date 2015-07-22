@@ -10,10 +10,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nicksheffield/postcss-hexa.git"
+    "url": "git+https://github.com/nicksheffield/postcss-color-hexa.git"
   },
   "keywords": [
-    "postcss-hexa",
+    "postcss-color-hexa",
     "node",
     "postcss",
     "postcss-plugin",
@@ -25,9 +25,9 @@
     "postcss-message-helpers": "^2.0.0"
   },
   "bugs": {
-    "url": "https://github.com/nicksheffield/postcss-hexa/issues"
+    "url": "https://github.com/nicksheffield/postcss-color-hexa/issues"
   },
-  "homepage": "https://github.com/nicksheffield/postcss-hexa#readme",
+  "homepage": "https://github.com/nicksheffield/postcss-color-hexa#readme",
   "devDependencies": {
     "mocha": "^2.2.5",
     "postcss": "^4.1.16"
