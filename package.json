@@ -1,6 +1,6 @@
 {
   "name": "postcss-color-hexa",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A postcss plugin that enables the use of hexa() to combine hex codes and opacity into rgba()",
   "main": "hexa.js",
   "scripts": {
