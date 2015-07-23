@@ -34,7 +34,7 @@ module.exports = postcss.plugin('hexa', function(opts) {
 			}
 
 			decl.value = helpers.try(function transformHexAlphaValue() {
-				return ;
+				return transformHexAlpha(decl.value, decl.source);
 			}, decl.source);
 		});
 	};
