@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/nicksheffield/postcss-color-hexa#readme",
   "devDependencies": {
+    "chai": "^3.2.0",
     "mocha": "^2.2.5"
   }
 }
