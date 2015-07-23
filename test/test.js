@@ -2,11 +2,11 @@ var hexa = require('../hexa');
 var postcss = require('postcss');
 
 
-describe('hexa()', function(){
+describe('hexa', function(){
 	
 	it('short hex and full decimal', function(done){
 		
-		postcss([hexa()])
+		postcss([hexa])
 	
 		.process('body { background: hexa(#fff, 0.1); }')
 		
@@ -22,7 +22,7 @@ describe('hexa()', function(){
 	
 	it('full hex and full decimal', function(done){
 		
-		postcss([hexa()])
+		postcss([hexa])
 		
 		.process('body { background: hexa(#ffffff, 0.1); }')
 		
@@ -38,7 +38,7 @@ describe('hexa()', function(){
 	
 	it('short hex and integer', function(done){
 		
-		postcss([hexa()])
+		postcss([hexa])
 		
 		.process('body { background: hexa(#fff, 1); }')
 		
@@ -54,7 +54,7 @@ describe('hexa()', function(){
 	
 	it('full hex and integer', function(done){
 		
-		postcss([hexa()])
+		postcss([hexa])
 		
 		.process('body { background: hexa(#ffffff, 1); }')
 		
@@ -72,7 +72,7 @@ describe('hexa()', function(){
 	
 	it('short hex and zeroless decimal', function(done){
 		
-		postcss([hexa()])
+		postcss([hexa])
 		
 		.process('body { background: hexa(#fff, .1); }')
 		
@@ -88,7 +88,7 @@ describe('hexa()', function(){
 	
 	it('full hex and zeroless decimal', function(done){
 		
-		postcss([hexa()])
+		postcss([hexa])
 		
 		.process('body { background: hexa(#ffffff, .1); }')
 		
@@ -104,7 +104,7 @@ describe('hexa()', function(){
 	
 	it('hex with zeroes at the end and zeroless decimal', function(done){
 		
-		postcss([hexa()])
+		postcss([hexa])
 		
 		.process('body { background: hexa(#f00, .1); }')
 		
@@ -120,7 +120,7 @@ describe('hexa()', function(){
 	
 	it('hex with zeroes at the end and full decimal', function(done){
 		
-		postcss([hexa()])
+		postcss([hexa])
 		
 		.process('body { background: hexa(#f00, 0.1); }')
 		
@@ -138,7 +138,7 @@ describe('hexa()', function(){
 	
 	it('without hexa', function(done){
 		
-		postcss([hexa()])
+		postcss([hexa])
 		
 		.process('body { background: #f00; }')
 		
@@ -154,7 +154,7 @@ describe('hexa()', function(){
 	
 	it('first within a multi-value property', function(done){
 		
-		postcss([hexa()])
+		postcss([hexa])
 		
 		.process('body { border: hexa(#fff, 0.1) 1px solid; }')
 		
@@ -170,7 +170,7 @@ describe('hexa()', function(){
 	
 	it('within a multi-value property', function(done){
 		
-		postcss([hexa()])
+		postcss([hexa])
 		
 		.process('body { border: 1px hexa(#fff, 0.1) solid; }')
 		
@@ -186,7 +186,7 @@ describe('hexa()', function(){
 	
 	it('last within a multi-value property', function(done){
 		
-		postcss([hexa()])
+		postcss([hexa])
 		
 		.process('body { border: 1px solid hexa(#fff, 0.1); }')
 		
@@ -202,7 +202,7 @@ describe('hexa()', function(){
 	
 	it('multiple colors on a line including a hexa', function(done){
 		
-		postcss([hexa()])
+		postcss([hexa])
 		
 		.process('body { border-color: #fff hexa(#fff, 0.1) red #f00; }')
 		
@@ -218,12 +218,12 @@ describe('hexa()', function(){
 	
 	it('multiple hexa\'s on a line', function(done){
 		
-		postcss([hexa()])
+		postcss([hexa])
 		
-		.process('body { border-color: #fff hexa(#fff, 0.1) hexa(#fff, 0.1) #f00; }')
+		.process('body { border-color: #0f0 hexa(#f0f, 0.1) hexa(#fff, 0.1) #f00; }')
 		
 		.then(function (compiled) {
-			if(compiled.css === 'body { border-color: #fff rgba(255, 255, 255, 0.1) rgba(255, 255, 255, 0.1) #f00; }'){
+			if(compiled.css === 'body { border-color: #0f0 rgba(255, 0, 255, 0.1) rgba(255, 255, 255, 0.1) #f00; }'){
 				done();
 			}else{
 				throw 'Output was incorrect';

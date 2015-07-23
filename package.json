@@ -22,14 +22,14 @@
     "color"
   ],
   "dependencies": {
-    "postcss-message-helpers": "^2.0.0"
+    "postcss-message-helpers": "^2.0.0",
+    "postcss": "^4.1.16"
   },
   "bugs": {
     "url": "https://github.com/nicksheffield/postcss-color-hexa/issues"
   },
   "homepage": "https://github.com/nicksheffield/postcss-color-hexa#readme",
   "devDependencies": {
-    "mocha": "^2.2.5",
-    "postcss": "^4.1.16"
+    "mocha": "^2.2.5"
   }
 }
