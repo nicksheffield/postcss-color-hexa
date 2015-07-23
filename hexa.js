@@ -10,8 +10,8 @@ var postcss = require("postcss");
 // Regex's
 // ----------------------------------------------------------------------------
 
-// Match the whole property. Test: http://regexr.com/3beor
-var HEX_ALPHA_RE = /hexa\(#(?:[0-9a-f]{3}){1,2},([\s]{0,})[0-9]*(\.)?[0-9]+(?:\s)*\)/i;
+// Match the whole property. Test: http://regexr.com/3bep1
+var HEX_ALPHA_RE = /hexa\((?:\s*)#(?:[0-9a-f]{3}){1,2}(?:\s*),([\s]{0,})[0-9]*(\.)?[0-9]+(?:\s)*\)/i;
 
 // Match the hex color. Test: http://regexr.com/3beoo
 var HEX_RE = /#(?:[0-9a-f]{3}){1,2}/i;
@@ -19,7 +19,7 @@ var HEX_RE = /#(?:[0-9a-f]{3}){1,2}/i;
 // Match the opacity number. Test: http://regexr.com/3beol
 var OPACITY_RE = /[0-9]*(\.)?[0-9]+(?=[\s]*\))/;
 
-// Match an invalid hex code (followed by, but not including, a comma). Test: http://regexr.com/3beoi
+// Match an invalid hex code (followed by a comma). Test: http://regexr.com/3beoi
 var INV_HEX_RE = /#(((?:[0-9a-f]){0,2})|((?:[0-9a-f]){4,5})|(((?:[0-9a-f]){7,})))(?=,)/i;
 
 // Match an invalid opacity number. Test: http://regexr.com/3beof
