@@ -2,6 +2,7 @@
 // Dependencies
 // ----------------------------------------------------------------------------
 
+var helpers = require("postcss-message-helpers");
 var postcss = require("postcss");
 
 
@@ -32,14 +33,16 @@ module.exports = postcss.plugin('hexa', function(opts) {
 				return;
 			}
 
-			decl.value = transformHexAlpha(decl.value, decl.source);
+			decl.value = helpers.try(function transformHexAlphaValue() {
+				return ;
+			}, decl.source);
 		});
 	};
 });
 
 
 // ----------------------------------------------------------------------------
-// Transform functions
+// Helper functions
 // ----------------------------------------------------------------------------
 
 function transformHexAlpha(string) {
