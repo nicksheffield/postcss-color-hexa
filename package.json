@@ -22,7 +22,6 @@
     "color"
   ],
   "dependencies": {
-    "postcss-message-helpers": "^2.0.0",
     "postcss": "^4.1.16"
   },
   "bugs": {
