@@ -11,20 +11,25 @@ var postcss = require("postcss");
 // ----------------------------------------------------------------------------
 
 // Match the whole property
-var HEX_ALPHA_RE = /hexa\(#(?:[0-9a-f]{3}){1,2},([\s]{1,})([0-9\.]{1,})\)/i;
+var HEX_ALPHA_RE = /hexa\(#(?:[0-9a-f]{3}){1,2},([\s]{0,})[0-9]*(\.)?[0-9]+\)/i;
 
 // Match the hex color
 var HEX_RE = /#(?:[0-9a-f]{3}){1,2}/i;
 
 // Match the opacity number
-var OPACITY_RE = /[0-9\.]{1,}(?=\))/;
+var OPACITY_RE = /[0-9]*(\.)?[0-9]+(?=\))/;
 
+// Match an invalid hex code (followed by, but not including, a comma)
+var INV_HEX_RE = /#(((?:[0-9a-f]){0,2})|((?:[0-9a-f]){4,5})|(((?:[0-9a-f]){7,})))(?=,)/i;
+
+// Match an invalid opacity number
+var INV_OPACITY_RE = /[0-9]\.[0-9]{0,}(?:\.[0-9]?){1,}/i;
 
 // ----------------------------------------------------------------------------
 // PostCSS Plugin
 // ----------------------------------------------------------------------------
 
-module.exports = postcss.plugin('hexa', function(opts) {
+module.exports = postcss.plugin('postcss-color-hexa', function(opts) {
 	opts = opts || {};
 
 	return function(css) {
@@ -34,7 +39,7 @@ module.exports = postcss.plugin('hexa', function(opts) {
 			}
 
 			decl.value = helpers.try(function transformHexAlphaValue() {
-				return transformHexAlpha(decl.value, decl.source);
+				return transformHexAlpha(decl.value, decl.source, decl);
 			}, decl.source);
 		});
 	};
@@ -45,14 +50,27 @@ module.exports = postcss.plugin('hexa', function(opts) {
 // Helper functions
 // ----------------------------------------------------------------------------
 
-function transformHexAlpha(string) {
+function transformHexAlpha(string, source, decl) {
 
 	return recurse(string);
 
 	function recurse(input) {
 		var hexa_pos = input.indexOf('hexa');
-		var h = HEX_RE.exec(input.substring(hexa_pos));
-		var o = OPACITY_RE.exec(input.substring(hexa_pos));
+		var subs = input.substring(hexa_pos);
+		
+		var h = HEX_RE.exec(subs);
+		var o = OPACITY_RE.exec(subs);
+		
+		var i_h = INV_HEX_RE.exec(subs);
+		var i_o = INV_OPACITY_RE.exec(subs);
+		
+		if(i_h !== null){
+			throw decl.error('Invalid hex color: ' + i_h[0], { plugin: 'postcss-color-hexa' });
+		}
+		
+		if(i_o !== null){
+			throw decl.error('Invalid opacity: ' + i_o[0], { plugin: 'postcss-color-hexa' });
+		}
 
 		if (!h) {
 			return input;
@@ -63,7 +81,7 @@ function transformHexAlpha(string) {
 		var hexa = '';
 
 		if (o) {
-			rgb_chars.push(o);
+			rgb_chars.push(o[0]);
 			hexa = 'rgba(' + rgb_chars.join(', ') + ')';
 		} else {
 			hexa = 'rgb(' + rgb_chars.join(', ') + ')';

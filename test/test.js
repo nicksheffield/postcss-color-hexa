@@ -2,7 +2,7 @@ var hexa = require('../hexa');
 var postcss = require('postcss');
 
 
-describe('hexa', function(){
+describe('postcss-color-hexa', function(){
 	
 	it('short hex and full decimal', function(done){
 		
@@ -16,6 +16,8 @@ describe('hexa', function(){
 			}else{
 				throw 'Output was incorrect';
 			}
+		}, function(){
+			console.log(arguments);
 		});
 	
 	});
@@ -32,6 +34,8 @@ describe('hexa', function(){
 			}else{
 				throw 'Output was incorrect';
 			}
+		}, function(){
+			console.log(arguments);
 		});
 		
 	});
@@ -48,6 +52,8 @@ describe('hexa', function(){
 			}else{
 				throw 'Output was incorrect';
 			}
+		}, function(){
+			console.log(arguments);
 		});
 		
 	});
@@ -64,6 +70,8 @@ describe('hexa', function(){
 			}else{
 				throw 'Output was incorrect';
 			}
+		}, function(){
+			console.log(arguments);
 		});
 		
 	});
@@ -82,6 +90,8 @@ describe('hexa', function(){
 			}else{
 				throw 'Output was incorrect';
 			}
+		}, function(){
+			console.log(arguments);
 		});
 		
 	});
@@ -98,6 +108,8 @@ describe('hexa', function(){
 			}else{
 				throw 'Output was incorrect';
 			}
+		}, function(){
+			console.log(arguments);
 		});
 		
 	});
@@ -114,6 +126,8 @@ describe('hexa', function(){
 			}else{
 				throw 'Output was incorrect';
 			}
+		}, function(){
+			console.log(arguments);
 		});
 		
 	});
@@ -130,6 +144,8 @@ describe('hexa', function(){
 			}else{
 				throw 'Output was incorrect';
 			}
+		}, function(){
+			console.log(arguments);
 		});
 		
 	});
@@ -148,6 +164,8 @@ describe('hexa', function(){
 			}else{
 				throw 'Output was incorrect';
 			}
+		}, function(){
+			console.log(arguments);
 		});
 		
 	});
@@ -164,6 +182,8 @@ describe('hexa', function(){
 			}else{
 				throw 'Output was incorrect';
 			}
+		}, function(){
+			console.log(arguments);
 		});
 		
 	});
@@ -180,6 +200,8 @@ describe('hexa', function(){
 			}else{
 				throw 'Output was incorrect';
 			}
+		}, function(){
+			console.log(arguments);
 		});
 		
 	});
@@ -196,6 +218,8 @@ describe('hexa', function(){
 			}else{
 				throw 'Output was incorrect';
 			}
+		}, function(){
+			console.log(arguments);
 		});
 		
 	});
@@ -227,6 +251,36 @@ describe('hexa', function(){
 				done();
 			}else{
 				throw 'Output was incorrect';
+			}
+		}, function(){
+			console.log(arguments);
+		});
+		
+	});
+	
+	it('invalid hex code fails', function(done){
+		
+		postcss([hexa])
+		
+		.process('body { background: hexa(#f0f0, 0.1); }')
+		
+		.then(function () {}, function(err){
+			if(err.reason === 'Invalid hex color: #f0f0'){
+				done();
+			}
+		});
+		
+	});
+	
+	it('invalid opacity number fails', function(done){
+		
+		postcss([hexa])
+		
+		.process('body { background: hexa(#f0f, 0.1.1); }')
+		
+		.then(function () {}, function(err){
+			if(err.reason === 'Invalid opacity: 0.1.1'){
+				done();
 			}
 		});
 		
