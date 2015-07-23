@@ -10,10 +10,10 @@ var helpers = require("postcss-message-helpers");
 // ----------------------------------------------------------------------------
 
 // Match the whole property
-var HEX_ALPHA_RE = /hexa\(#([0-9a-fA-F]{3,6}),([\s]{1,})([0-9\.]{1,})\)/i;
+var HEX_ALPHA_RE = /hexa\(#(?:[0-9a-f]{3}){1,2},([\s]{1,})([0-9\.]{1,})\)/i;
 
 // Match the hex color
-var HEX_RE = /#(?:[0-9a-f]{3}){1,2}/;
+var HEX_RE = /#(?:[0-9a-f]{3}){1,2}/i;
 
 // Match the opacity number
 var OPACITY_RE = /[0-9\.]{1,}(?=\))/;

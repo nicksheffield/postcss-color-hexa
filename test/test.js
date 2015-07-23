@@ -200,4 +200,36 @@ describe('hexa()', function(){
 		
 	});
 	
+	it('multiple colors on a line including a hexa', function(done){
+		
+		postcss([hexa()])
+		
+		.process('body { border-color: #fff hexa(#fff, 0.1) red #f00; }')
+		
+		.then(function (compiled) {
+			if(compiled.css === 'body { border-color: #fff rgba(255, 255, 255, 0.1) red #f00; }'){
+				done();
+			}else{
+				throw 'Output was incorrect';
+			}
+		});
+		
+	});
+	
+	it('multiple hexa\'s on a line', function(done){
+		
+		postcss([hexa()])
+		
+		.process('body { border-color: #fff hexa(#fff, 0.1) hexa(#fff, 0.1) #f00; }')
+		
+		.then(function (compiled) {
+			if(compiled.css === 'body { border-color: #fff rgba(255, 255, 255, 0.1) rgba(255, 255, 255, 0.1) #f00; }'){
+				done();
+			}else{
+				throw 'Output was incorrect';
+			}
+		});
+		
+	});
+	
 });
