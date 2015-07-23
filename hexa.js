@@ -17,13 +17,13 @@ var HEX_ALPHA_RE = /hexa\(#(?:[0-9a-f]{3}){1,2},([\s]{0,})[0-9]*(\.)?[0-9]+\)/i;
 var HEX_RE = /#(?:[0-9a-f]{3}){1,2}/i;
 
 // Match the opacity number
-var OPACITY_RE = /[0-9]*(\.)?[0-9]+(?=\))/;
+var OPACITY_RE = /[0-9]*(\.)?[0-9]+(?=[\s]*\))/;
 
 // Match an invalid hex code (followed by, but not including, a comma)
 var INV_HEX_RE = /#(((?:[0-9a-f]){0,2})|((?:[0-9a-f]){4,5})|(((?:[0-9a-f]){7,})))(?=,)/i;
 
 // Match an invalid opacity number
-var INV_OPACITY_RE = /[0-9]\.[0-9]{0,}(?:\.[0-9]?){1,}/i;
+var INV_OPACITY_RE = /[0-9]*(\.)?[0-9]*(?:\.[0-9]*){2,}/i;
 
 // ----------------------------------------------------------------------------
 // PostCSS Plugin
