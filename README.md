@@ -1,4 +1,4 @@
-postcss-color-hexa
+postcss-color-hexa [![Build Status](https://travis-ci.org/nicksheffield/postcss-color-hexa.svg?branch=master)](https://travis-ci.org/nicksheffield/postcss-color-hexa)
 ===================
 A postcss plugin that enables the use of hexa() to combine hex codes and opacity into rgba()
 
