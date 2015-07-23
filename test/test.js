@@ -14,8 +14,8 @@ describe('postcss-color-hexa', function() {
 			res = postcss([hexa]).process(source).css;
 		} catch (err){
 			// console.log(err);
-			// throw err;
-			res = err.reason;
+			throw err;
+			// res = err.reason;
 		}
 		return res;
 	}
@@ -119,15 +119,20 @@ describe('postcss-color-hexa', function() {
 	});
 
 	it('invalid hex code fails', function(done) {
-		expect(transform('body { background: hexa(#f0f0, 0.1); }'))
-		.to.equal('Invalid hex color: #f0f0');
+		// http://stackoverflow.com/questions/21587122/mocha-chai-expect-to-throw-not-catching-thrown-errors
+		expect(function(){
+			transform('body { background: hexa(#f0f0, 0.1); }');
+		})
+		.to.throw(/Invalid hex color/);
 		
 		done();
 	});
 
 	it('invalid opacity number fails', function(done) {
-		expect(transform('body { background: hexa(#f0f, 0.1.1); }'))
-		.to.equal('Invalid opacity: 0.1.1');
+		expect(function(){
+			transform('body { background: hexa(#f0f, 0.1.1); }');
+		})
+		.to.throw(/Invalid opacity/);
 		
 		done();
 	});
