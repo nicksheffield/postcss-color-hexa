@@ -23,3 +23,9 @@ body {
 ```javascript
 postcss([require('postcss-color-hexa')]);
 ```
+
+## Install
+
+```shell
+npm install --save postcss-color-hexa
+```
