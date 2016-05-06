@@ -33,7 +33,7 @@ module.exports = postcss.plugin('postcss-color-hexa', function(opts) {
 	opts = opts || {};
 
 	return function(css) {
-		css.eachDecl(function transformDecl(decl) {
+		css.walkDecls(function transformDecl(decl) {
 			if (!decl.value || decl.value.indexOf('hexa') === -1) {
 				return;
 			}

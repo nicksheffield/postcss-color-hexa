@@ -22,8 +22,8 @@
     "color"
   ],
   "dependencies": {
-    "postcss-message-helpers": "^2.0.0",
-    "postcss": "^4.1.16"
+    "postcss": "^5.0.21",
+    "postcss-message-helpers": "^2.0.0"
   },
   "bugs": {
     "url": "https://github.com/nicksheffield/postcss-color-hexa/issues"
